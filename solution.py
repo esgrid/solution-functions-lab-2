@@ -22,10 +22,10 @@ def incomplete_tasks(tasks):
     print(f"Incomplete tasks: {incomplete}.")
 
 def print_descriptions(tasks):
-    descriptions = []
     for task in tasks:
-        descriptions.append(task["description"])
-    print (descriptions)
+        print("Description:" + task["description"])
+        print("Completed: " + str(task["completed"]))
+        print("Time Taken: " + str(task["time_taken"]))
 
 def time_taken(tasks, time):
     tasks_time = []
@@ -55,6 +55,18 @@ def add_task(tasks, new_task):
     tasks.append(new_task)
     print(tasks)
 
+def menu():
+    print("Menu:")
+    print("1: Display All Tasks")
+    print("2: Display Uncompleted Tasks")
+    print("3: Display Completed Tasks")
+    print("4: Mark Task as Complete")
+    print("5: Get Tasks Which Take Longer Than a Given Time")
+    print("6: Find Task by Description")
+    print("7: Add a new Task to list")
+    print("M or m: Display this menu")
+    print("Q or q: Quit")
+
 # Using my functions
 
 # completed_tasks(tasks)
@@ -73,16 +85,7 @@ def add_task(tasks, new_task):
 
 # add_task(tasks, new_task)
 
-print("Menu:")
-print("1: Display All Tasks")
-print("2: Display Uncompleted Tasks")
-print("3: Display Completed Tasks")
-print("4: Mark Task as Complete")
-print("5: Get Tasks Which Take Longer Than a Given Time")
-print("6: Find Task by Description")
-print("7: Add a new Task to list")
-print("M or m: Display this menu")
-print("Q or q: Quit")
+menu()
 option = input("Please enter the desired option: ").lower()
 
 while option != "q":
@@ -100,18 +103,9 @@ while option != "q":
         given_description(tasks, input("Enter description: "))
     elif option == "7":
         task = {"description": input("Enter name of new task: "), 
-                "completed": True if (input("Enter status of completion: ").lower() == "true") else False, 
+                "completed": True if (input("Enter status of completion (True/False)): ").lower() == "true") else False, 
                 "time_taken": int(input("Enter time taken: "))}
         add_task(tasks, task)
     elif option == "m":
-        print("Menu:")
-        print("1: Display All Tasks")
-        print("2: Display Uncompleted Tasks")
-        print("3: Display Completed Tasks")
-        print("4: Mark Task as Complete")
-        print("5: Get Tasks Which Take Longer Than a Given Time")
-        print("6: Find Task by Description")
-        print("7: Add a new Task to list")
-        print("M or m: Display this menu")
-        print("Q or q: Quit")
+        menu()
     option = input("Please enter the desired option: ").lower()
